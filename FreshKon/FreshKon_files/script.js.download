@@ -1,0 +1,453 @@
+$( window ).on( "load", function() {
+   $(".loader").fadeOut("fast");
+   $('#myModal').modal('show');
+});
+ 
+
+// ======= HEADER FIX ========
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+     //console.log(scroll);
+    if (scroll >= 200) {
+        //console.log('a');
+        $(".header-menu").addClass("header-fix");
+    } else {
+        //console.log('a');
+        $(".header-menu").removeClass("header-fix");
+    }
+});
+// ==========READ MORE TEXT=========
+    $(document).ready(function() {
+    
+    var showChar = 128; 
+    var ellipsestext = "";
+    var moretext = "READ MORE";
+    var lesstext = "READ LESS";
+    
+
+    $('.show-read-more').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a class="morelink readmore-a">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
+
+// ===== Scroll to Top ==== 
+$('#top-btn').hide();
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 200) {        // If page is scrolled more than 50px
+        $('#top-btn').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#top-btn').fadeOut(200);   // Else fade out the arrow
+    }
+});
+$('#top-btn').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 800);
+});
+
+
+// ====== OTHER ========
+
+
+$(".profilebtn").click(function (e) {
+    e.stopPropagation();
+    $(".profile-menu").fadeToggle();
+});
+
+$(document).click(function (e) {
+    if (!$(e.target).closest('.profile-menu').length)
+    {
+        $('.profile-menu').fadeOut();
+    }
+});
+
+$(".language-select button").click(function (e) {
+    e.stopPropagation();
+    $(".language-select ul").fadeToggle();
+});
+
+$(document).click(function (e) {
+    if (!$(e.target).closest('.language-select ul').length)
+    {
+        $('.language-select ul').fadeOut();
+    }
+});
+
+$(".language-select ul li").click(function () {
+    $(".language-select ul").fadeToggle();
+});
+
+
+// ============ MORE-INTERESTING====
+
+$(function(){
+var owl = $('.owl-more-interesting');
+owl.owlCarousel({
+  autoplay: 2000,
+  loop: true,
+  margin:20,
+  responsive:{
+        0:{
+            items:1,
+            margin:20
+        },
+        768:{
+            items:3
+        },
+        992:{
+            items:3
+        }
+    },
+  onInitialized  : counter, //When the plugin has initialized.
+  onTranslated : counter //When the translation of the stage has finished.
+
+
+});
+
+function counter(event) {
+   var element   = event.target;         // DOM element, in this example .owl-carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index + 1;     // Position of the current item
+  
+  // it loop is true then reset counter from 1
+  if(item > items) {
+    item = item - items
+  }
+  $('#active-counter').html("0" + item)
+  $('#total-counter').html("0" + items)
+}
+$('.nextbtn').click(function() {
+    owl.trigger('next.owl.carousel');
+  });
+  $('.prebtn').click(function() {
+    owl.trigger('prev.owl.carousel');
+  });
+});
+
+// ============TESTIMONIALS============
+$(function(){
+var owl = $('.owl-testimonials');
+owl.owlCarousel({
+  autoplay: 2000,
+  loop: true,
+  margin:40,
+  responsive:{
+        0:{
+            items:2,
+            margin:20
+        },
+        768:{
+            items:3
+        },
+        992:{
+            items:4
+        }
+    },
+  onInitialized  : counter, //When the plugin has initialized.
+  onTranslated : counter //When the translation of the stage has finished.
+
+
+});
+
+function counter(event) {
+   var element   = event.target;         // DOM element, in this example .owl-carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index + 1;     // Position of the current item
+  
+  // it loop is true then reset counter from 1
+  if(item > items) {
+    item = item - items
+  }
+  $('#active-counter').html("0" + item)
+  $('#total-counter').html("0" + items)
+}
+$('.nextbtn').click(function() {
+    owl.trigger('next.owl.carousel');
+  });
+  $('.prebtn').click(function() {
+    owl.trigger('prev.owl.carousel');
+  });
+});
+
+
+
+
+
+$(function(){
+var owl = $('.owl-proudly-present');
+owl.owlCarousel({
+  autoplay: 2000,
+  loop: true,
+  margin:40,
+  responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    },
+  onInitialized  : counter, //When the plugin has initialized.
+  onTranslated : counter //When the translation of the stage has finished.
+
+
+});
+
+function counter(event) {
+   var element   = event.target;         // DOM element, in this example .owl-carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index + 1;     // Position of the current item
+  
+  // it loop is true then reset counter from 1
+  if(item > items) {
+    item = item - items
+  }
+  $('#active-counter1').html("0" + item)
+  $('#total-counter1').html("0" + items)
+}
+$('.nextbtn1').click(function() {
+    owl.trigger('next.owl.carousel');
+  });
+  $('.prebtn1').click(function() {
+    owl.trigger('prev.owl.carousel');
+  });
+});
+
+
+$(function(){
+var owl = $('.home-slider');
+owl.owlCarousel({
+  autoplay: 6000,
+  loop: true,
+  items:1,
+  margin:0,
+  onInitialized  : counter, //When the plugin has initialized.
+  onTranslated : counter //When the translation of the stage has finished.
+
+
+});
+
+function counter(event) {
+   var element   = event.target;         // DOM element, in this example .owl-carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index + 1;     // Position of the current item
+  
+  // it loop is true then reset counter from 1
+  if(item > items) {
+    item = item - items
+  }
+  $('#active-hs').html("0" + item)
+  $('#total-hs').html("0" + items)
+}
+$('.next-hs').click(function() {
+    owl.trigger('next.owl.carousel');
+  });
+  $('.pre-hs').click(function() {
+    owl.trigger('prev.owl.carousel');
+  });
+});
+// ===========
+var selector = '.header-menu .nav-item';
+
+$(selector).on('click', function(){
+    $(selector).removeClass('active');
+    $(this).addClass('active');
+});
+// ============== 
+$( document ).ready(function() {
+  $('.search-menu-btn .navbar-toggler').click( function() {
+    $(".navbar-collapse").css("transform","translateX(0%)");
+    $("body").css("overflow-y","hidden");
+  } );
+  $('.resp-menu2 .navbar-toggler').click( function() {
+    $(".navbar-collapse").css("transform","translateX(-100%)");
+    $("body").css("overflow-y","auto");
+  } );
+});
+// =========
+if ($(window).width() < 767) {
+   
+  $('#daily-tab').click( function() {
+    $(".monthly-lens-div.daily").css("display","block");
+    $(".monthly-lens-div.monthly").css("display","none");
+  } );
+
+   $('#monthly-tab').click( function() {
+    $(".monthly-lens-div.daily").css("display","none");
+    $(".monthly-lens-div.monthly").css("display","block");
+  } );
+}
+else {
+  
+}
+// ==========
+
+
+
+if ($(window).width() < 767) {
+  $('.six-carousel').owlCarousel({
+    loop:false,
+    margin:10,
+    nav:false,
+    dots:true,
+    responsive:{
+        0:{
+            items:4
+        },
+        768:{
+            items:5
+        },
+        992:{
+            items:6
+        }
+    }
+})
+$('.three-carousel').owlCarousel({
+    loop:false,
+    margin:10,
+    nav:false,
+    dots:true,
+    responsive:{
+        0:{
+            items:4
+        },
+        768:{
+            items:3
+        },
+        992:{
+            items:3
+        }
+    }
+})
+$('.four-carousel').owlCarousel({
+    loop:false,
+    margin:10,
+    nav:false,
+    dots:true,
+    responsive:{
+        0:{
+            items:4
+        },
+        768:{
+            items:3
+        },
+        992:{
+            items:4
+        }
+    }
+})
+}
+else {
+ 
+}
+
+
+//=========
+$(function(){
+var owl = $('.owl-most-intresting-article');
+owl.owlCarousel({
+  autoplay: 2000,
+  loop: true,
+  margin:0,
+  responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    },
+  onInitialized  : counter1, //When the plugin has initialized.
+  onTranslated : counter1 //When the translation of the stage has finished.
+
+
+});
+function counter1(event) {
+   var element   = event.target;         // DOM element, in this example .owl-carousel
+    var items     = event.item.count;     // Number of items
+    var item      = event.item.index + 1;     // Position of the current item
+  
+  // it loop is true then reset counter from 1
+  if(item > items) {
+    item = item - items
+  }
+  $('#active-counter1').html("0" + item)
+  $('#total-counter1').html("0" + items)
+}
+$('.nextbtn1').click(function() {
+    owl.trigger('next.owl.carousel');
+  });
+  $('.prebtn1').click(function() {
+    owl.trigger('prev.owl.carousel');
+  });
+});
+
+
+
+// ==========TESTIMONIALS READ MORE =========
+     $(document).ready(function() {
+    
+    var showChar = 40; 
+    var ellipsestext = "...";
+    var moretext = "READ MORE";
+    var lesstext = "READ LESS";
+    
+
+    $('.show-read-moret').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipsest">' + ellipsestext+ '&nbsp;</span><span class="morecontentt"><span>' + h + '</span>&nbsp;&nbsp;<a class="morelinkt readmore-a">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelinkt").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});

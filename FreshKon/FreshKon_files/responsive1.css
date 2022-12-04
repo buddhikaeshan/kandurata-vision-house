@@ -1,0 +1,8 @@
+@media (max-width: 767px){
+	
+	.freshkon-blue-section .clear-img {
+	    display: flex;
+	    margin: auto;
+	    max-width: 200px;
+	}
+}
